@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin Login</title>
+<link href="https://forms.visme.co/formsPlayer/jwomvk1y-untitled-project" rel="stylesheet" />
+<style>
+    body {
+  font-family: Arial, sans-serif;
+  background-color: #f58585;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-image: url(./planet9_Wallpaper_5000x2813.jpg);
+}
+
+.login-container {
+  background-color: #efefef;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background-image: url(./Nitro_Wallpaper_5000x2813.jpg);
+}
+
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  margin-bottom: 50px;
+  color: #110101;
+}
+
+input[type="text"],
+input[type="password"] {
+  width: 100%;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+button {
+  background-color: #007bff;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+#message {
+  color: red;
+}
+h2{
+  color: #e41b1b;
+}
+button{
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  margin-top: 20px;
+
+}
+
+</style>
+</head>
+<body>
+<div class="login-container">
+  <h2>Employee Login</h2>
+  <form id="loginForm">
+    <div class="form-group">
+      <label for="username">Username:</label>
+      <input type="text" id="username" name="username" required>
+    </div>
+    <div class="form-group">
+      <label for="password">Password:</label>
+      <input type="password" id="password" name="password" required>
+    </div>
+    <button type="submit">Login</button>
+    <button id="backButton" type="button">Back</button>
+  </form>
+  <p id="message"></p>
+</div>
+
+<script>
+document.getElementById('loginForm').addEventListener('submit', function(event) {
+  event.preventDefault(); 
+  
+  var users = [
+    { username: 'karanam@123', password: '12345@' },
+    { username: 'user1', password: 'password1' },
+    { username: 'user2', password: 'password2' }
+  ];
+
+  var username = document.getElementById('username').value;
+  var password = document.getElementById('password').value;
+  var message = document.getElementById('message');
+
+  var isAuthenticated = false;
+  
+  users.forEach(function(user) {
+    if (user.username === username && user.password === password) {
+      isAuthenticated = true;
+    }
+  });
+  
+  if (isAuthenticated) {
+    message.textContent = 'Login successful! Redirecting...';
+    setTimeout(function() {
+      window.location.href = 'hrpage.html'; // Replace 'next_page.html' with the URL of your next page
+    }, 2000);
+  } else {
+    message.textContent = 'Invalid username or password';
+    alert("Invalid username or password. Please try again.");
+  }
+});
+
+document.getElementById('backButton').addEventListener('click', function() {
+  window.history.back();
+});
+</script>
+</body>
+</html>
